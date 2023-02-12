@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS public.tblorders
+(
+    id bigint NOT NULL DEFAULT nextval('tblorders_id_seq'::regclass),
+    product_id bigint,
+    product_qty integer NOT NULL,
+    user_id bigint,
+    CONSTRAINT tblorders_pkey PRIMARY KEY (id)
+)
+
+CREATE TABLE IF NOT EXISTS public.tblproducts
+(
+    id bigint NOT NULL DEFAULT nextval('tblproducts_id_seq'::regclass),
+    description character varying(255) COLLATE pg_catalog."default",
+    price double precision NOT NULL,
+    product_name character varying(255) COLLATE pg_catalog."default",
+    qty integer NOT NULL,
+    user_id bigint,
+    CONSTRAINT tblproducts_pkey PRIMARY KEY (id)
+)
+CREATE TABLE IF NOT EXISTS public.tblusers
+(
+    userid bigint NOT NULL DEFAULT nextval('tblusers_userid_seq'::regclass),
+    email character varying(255) COLLATE pg_catalog."default",
+    password character varying(255) COLLATE pg_catalog."default",
+    role character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT tblusers_pkey PRIMARY KEY (userid)
+)
